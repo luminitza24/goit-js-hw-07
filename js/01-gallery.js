@@ -5,6 +5,7 @@ for (let i = 0; i < galleryItems.length; i++){
     newImage.classList.add( 'image-item')
     newImage.setAttribute('source', galleryItems[i].original)
     newImage.src = galleryItems[i].preview;
+    newImage.setAttribute('data-source', "large-image.jpg");
     const link = document.createElement('a');
     link.appendChild(newImage);
     link.setAttribute('href', "large-image.jpg");
