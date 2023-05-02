@@ -1,6 +1,5 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const lightbox = $('.gallery a').simpleLightbox({ /* options */ });
 for (let i = 0; i < galleryItems.length; i++){
     const newImage = document.createElement('img')
     newImage.classList.add( 'image-item')
