@@ -9,6 +9,7 @@ for (let i = 0; i < galleryItems.length; i++){
     const link = document.createElement('a');
     link.appendChild(newImage);
     link.setAttribute('href', "large-image.jpg");
+    link.changeAtribute('href', galleryItems[i])
     link.classList.add("gallery__link");
     const listItem = document.createElement('li')
     listItem.appendChild(link);
@@ -16,18 +17,3 @@ for (let i = 0; i < galleryItems.length; i++){
     listItem.classList.add("gallery-item");
   
   }
-  (() => {
-    const modalgallery = {
-      openModal: document.querySelector("[data-modal-open]"),
-      closeModalBtn: document.querySelector("[data-modal-close]"),
-      
-    };
-  
-    modalgallery.openModal.addEventListener("click", toggleModal);
-    modalgallery.closeModalBtn.addEventListener("click", toggleModal);
-  
-    function toggleModal() {
-    modalgallery.openModal.classList.toggle("is-hidden");
-    }
-  })();
-console.log(galleryItems);
