@@ -19,10 +19,15 @@ for (let i = 0; i < galleryItems.length; i++){
       event.preventDefault()
     });  
   }
+const lista= document.querySelector(".gallery")
+  lista.addEventListener("click", myEvent) 
+  const myEvent=(e)=> {
+    const element = e.target;
+    const deLogat = element.dataset.source;
+    const instance = basicLightbox.create(`
+    <img src="galleryItems[i].original.jpg" width="800" height="600">
+`)
 
-  document.querySelector('a').onclick = () => {
-
-    basicLightbox.show('href')
-  
+instance.show(deLogat)
   }
-  
+  console.log(deLogat)

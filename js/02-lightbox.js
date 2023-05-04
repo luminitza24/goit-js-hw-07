@@ -25,5 +25,5 @@ const myEvent= (e)=>{
   }
   lista.addEventListener("click", myEvent)
   const lightbox = ('.gallery-items.js').simpleLightbox({ enableKeyboard:"esc", captionsData:"alt" });
-  lightbox.on(shown.simplelightbox, myEvent) 
+  lightbox.on(shown.simpleLightbox, myEvent) 
   
