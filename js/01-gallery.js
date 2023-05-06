@@ -1,5 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
+
 const images1 = galleryItems;
 for (let i = 0; i < images1.length; i++){
     const newImage = document.createElement('img')
@@ -9,7 +10,7 @@ for (let i = 0; i < images1.length; i++){
     newImage.setAttribute('alt', images1[i].description);
     const link = document.createElement('a');
     link.appendChild(newImage);
-    link.setAttribute('href', galleryItems[i].original);
+    link.setAttribute('href', images1[i].original);
     link.classList.add("gallery__link");
     const listItem = document.createElement('li')
     listItem.appendChild(link);
@@ -20,15 +21,16 @@ for (let i = 0; i < images1.length; i++){
     });  
   }
 const lista= document.querySelector(".gallery")
- 
+ for (let i =0; i= images1.length; i++){
   const myEvent=(e)=> {
     const element = e.target;
-    const src = element.dataset.source;
+    const src = []
+     src = element.dataset.source[i];
     const instance = basicLightbox.create(`
-    <img src= "images1[i].original" alt="images1[i].description">
+    <img src= "${images1[i].original}" alt="${images1[i].description}">
 `)
 
 instance.show(instance)
-  }
+  }}
   lista.addEventListener("click", myEvent) 
   console.log(lista)
