@@ -1,36 +1,40 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
+const gallery = document.querySelector(".gallery");
 
-const images1 = galleryItems;
-for (let i = 0; i < images1.length; i++){
-    const newImage = document.createElement('img')
-    newImage.classList.add( 'gallery__item')
-    newImage.setAttribute('src', images1[i].preview);
-    newImage.setAttribute('data-source', images1[i].original);
-    newImage.setAttribute('alt', images1[i].description);
-    const link = document.createElement('a');
-    link.appendChild(newImage);
-    link.setAttribute('href', images1[i].original);
+for (let i = 0; i < galleryItems.length; i++) {
+    const picture = galleryItems[i];
+    const index = i;
+    const {preview, original, description} = picture;
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    const image = document.createElement("img");
+    image.src = preview;
+    image.alt = description;
+    link.href = original;
+    image.classList.add("gallery__image");
+    image.setAttribute('id', `${index}`);
     link.classList.add("gallery__link");
-    const listItem = document.createElement('li')
-    listItem.appendChild(link);
-    document.querySelector(".gallery").appendChild(listItem);
-    listItem.classList.add("gallery-item");
-    link.addEventListener("click", function(event){
-      event.preventDefault()
-    });  
-  }
-const lista= document.querySelector(".gallery")
- for (let i =0; i= images1.length; i++){
-  const myEvent=(e)=> {
-    const element = e.target;
-    const src = []
-     src = element.dataset.source[i];
-    const instance = basicLightbox.create(`
-    <img src= "${images1[i].original}" alt="${images1[i].description}">
-`)
+    link.appendChild(image);
+    item.appendChild(link);
+    gallery.appendChild(item);
+}
+const linkItem = document.querySelectorAll(".gallery__link");
+linkItem.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+  });
+});
 
-instance.show(instance)
-  }}
-  lista.addEventListener("click", myEvent) 
-  console.log(lista)
+gallery.addEventListener('click', (event) => {
+  const clickedItem = event.target;
+  
+  const id = clickedItem.id;
+  const url = galleryItems[id].original;
+  const descr = galleryItems[id].description;
+
+  console.log(url);
+  const instance = basicLightbox.create(`<img src="${url}" alt = "${descr}">`)
+
+  instance.show()
+})

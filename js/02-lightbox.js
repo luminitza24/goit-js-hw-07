@@ -1,31 +1,35 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const images2= galleryItems
-for (let i = 0; i < images2.length; i++){
-    const newImage = document.createElement('img')
-    newImage.classList.add( 'gallery__image')
-    newImage.src = images2[i].preview;
-    newImage.setAttribute('data-source', images2[i].original);
-    newImage.setAttribute('alt', images2[i].description);
-    const link = document.createElement('a');
-    link.appendChild(newImage);
-    link.setAttribute('href', images2[i].original);
-    link.classList.add("gallery__link");
-    const listItem = document.createElement('li')
-    listItem.appendChild(link);
-    document.querySelector('.gallery').appendChild(listItem);
-    listItem.classList.add("gallery__item");
-    link.addEventListener("click", function(event){
-      event.preventDefault()
-    });  
-  }
-  const lista = document.querySelector(".gallery");
-const myEvent= (e)=>{
-      const element = e.target;
-      const image = element.dataset.source;
-  }
+const gallery = document.querySelector(".gallery");
 
-const lightbox = ('.images a').simpleLightbox({ enableKeyboard:"esc", captionsData:"alt" });
-  lightbox.on(shown.simpleLightbox, myEvent) 
-  lista.addEventListener("click", myEvent)
-console.log(lista);
+for (let i = 0; i < galleryItems.length; i++) {
+    const picture = galleryItems[i];
+    const index = i;
+    const {preview, original, description} = picture;
+    const item = document.createElement("li");
+    const link = document.createElement("a");
+    const image = document.createElement("img");
+    image.src = preview;
+    image.alt = description;
+    link.href = original;
+    image.classList.add("gallery__image");
+    image.setAttribute('id', `${index}`);
+    link.classList.add("gallery__link");
+    link.appendChild(image);
+    item.appendChild(link);
+    gallery.appendChild(item);
+}
+
+
+const linkItem = document.querySelectorAll(".gallery__link");
+linkItem.forEach((link) => {
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+  });
+});
+
+const lightbox = new simplelightbox(".gallery a", {
+  captions: true,
+  captionsData: "alt",
+});
+console.log(lightbox)
