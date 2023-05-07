@@ -28,7 +28,8 @@ linkItem.forEach((link) => {
   });
 });
 
-const lightbox = $(".gallery a").simpleLightbox({
+const lightbox = $('.gallery a').simpleLightbox({
   captions: true,
   captionsData: "alt",
 });
+console.log(lightbox);
